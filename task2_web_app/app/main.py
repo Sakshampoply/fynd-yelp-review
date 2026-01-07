@@ -9,10 +9,8 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Fynd AI Feedback System")
 
 # Configure CORS
-origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+# In production, you would replace "*" with the actual frontend domain
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
