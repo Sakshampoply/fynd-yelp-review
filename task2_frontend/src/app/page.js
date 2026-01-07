@@ -18,8 +18,10 @@ export default function UserDashboard() {
     setStatus({ type: '', message: '' });
     setAiResponse(null);
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+
     try {
-      const res = await fetch('http://127.0.0.1:8000/reviews/', {
+      const res = await fetch(`${API_URL}/reviews/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

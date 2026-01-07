@@ -14,10 +14,12 @@ export default function AdminDashboard() {
   const [starFilter, setStarFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+
   const fetchReviews = async () => {
       try {
           setError(null);
-          const res = await fetch('http://127.0.0.1:8000/reviews/');
+          const res = await fetch(`${API_URL}/reviews/`);
           if (!res.ok) {
             throw new Error(`HTTP error! status: ${res.status}`);
           }
@@ -38,7 +40,7 @@ export default function AdminDashboard() {
     fetchReviews();
 
     // Setup Server-Sent Events (SSE) for real-time updates
-    const eventSource = new EventSource('http://127.0.0.1:8000/reviews/events');
+    const eventSource = new EventSource(`${API_URL}/reviews/events`);
 
     eventSource.onmessage = (event) => {
       try {
