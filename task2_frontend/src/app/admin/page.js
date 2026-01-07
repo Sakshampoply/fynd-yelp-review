@@ -14,14 +14,17 @@ export default function AdminDashboard() {
   const [starFilter, setStarFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+  // Ensure no double slashes if the env var has a trailing slash
+  const envUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+  const API_URL = envUrl.replace(/\/$/, '');
 
   const fetchReviews = async () => {
       try {
           setError(null);
           const res = await fetch(`${API_URL}/reviews/`);
           if (!res.ok) {
-            throw new Error(`HTTP error! status: ${res.status}`);
+            const errorText = await res.text().catch(() => 'Unknown error');
+            throw new Error(`HTTP error! status: ${res.status} - ${errorText}`);
           }
           const data = await res.json();
           // Sort by newest first
@@ -29,7 +32,7 @@ export default function AdminDashboard() {
           setReviews(data);
       } catch (error) {
           console.error("Failed to fetch reviews:", error);
-          setError("Failed to connect to backend server. Is it running?");
+          setError(`Error: ${error.message}. Is backend running?`);
       } finally {
           setLoading(false);
       }

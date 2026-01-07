@@ -18,7 +18,9 @@ export default function UserDashboard() {
     setStatus({ type: '', message: '' });
     setAiResponse(null);
 
-    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+    // Ensure no double slashes if the env var has a trailing slash
+    const envUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+    const API_URL = envUrl.replace(/\/$/, '');
 
     try {
       const res = await fetch(`${API_URL}/reviews/`, {
