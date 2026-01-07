@@ -58,7 +58,7 @@ Comparison of three prompting strategies to classify Yelp reviews:
 - **Role-Based**: Setting a "Food Critic" persona for the model.
 - **Outcome**: Generates an accuracy comparison chart and validates JSON output formatting.
 
-> **Note on Model Usage**: The evaluation loop was computed using the **gemma-3-27b** model to accommodate Gemini free tier rate limits. The main application (Task 2) utilizes **gemini-1.5-flash** for superior performance. This difference in models (specifically using Gemma for the notebook) explains why the evaluation results may appear similar across different prompting strategies.
+> **Note on Model Usage**: The evaluation loop was computed using the **gemma-3-27b** model to accommodate Gemini free tier rate limits. The main application (Task 2) utilizes **gemini-2.5-flash** for superior performance. This difference in models (specifically using Gemma for the notebook) explains why the evaluation results may appear similar across different prompting strategies.
 
 ### 2. Task 2: Full Stack Application
 
