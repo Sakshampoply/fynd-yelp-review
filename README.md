@@ -4,6 +4,8 @@ This repository contains the solution for the Fynd AI Intern Assessment. It is a
 
 ## 🚀 Live Demo
 
+> **Note:** The backend is hosted on Render’s free tier. If the service has been idle, the first request may fail while the server restarts. Please wait 1–3 minutes and retry. The application is fully functional thereafter.
+
 - **Frontend (Vercel)**: https://fynd-yelp-review.vercel.app
 - **Backend (Render)**: https://fynd-backend-crvz.onrender.com/
 - **API Documentation**: https://fynd-backend-crvz.onrender.com/docs
